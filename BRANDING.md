@@ -1,5 +1,8 @@
 # Westpac SpeedQ branding
 
+**Merged and verified:** [PR #14](https://github.com/bharath-blazecode/Team-Astars/pull/14) merged commit `d057af0`
+into `main` at `60adbde`. Git remote ancestry and matching file trees were checked on 17 Nov 2026 (Brisbane).
+
 The team renamed Beacon Assist to **Westpac SpeedQ** and chose to retain the original dashboard partitions, sidebar
 and case workflow. The later horizontal-navigation concept was not selected. This update changes the name, mark and
 colour system across the current dashboard, API reference and retained demo pages.

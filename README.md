@@ -30,6 +30,9 @@ approval, so proposals improve over time.
 
 **Current delivery status — reviewed 17 Nov 2026 (Brisbane):** the officer **dashboard** and core case workflow are
 implemented and merged into `main`, including graphical insights, shared officer ownership and live intake.
+The **Westpac SpeedQ name, red/neutral palette and Westpac mark are also merged**, via
+[PR #14](https://github.com/bharath-blazecode/Team-Astars/pull/14). Remote `main` was verified at `60adbde`, containing
+the complete branding commit `d057af0`; the original dashboard layout is retained.
 **Further feature brainstorming, UI appearance refinements and officer usability testing remain open.** The project
 is a working prototype, not a finished banking service. See [build status](#build-status-what-this-repo-runs-today)
 and [remaining work](#remaining-work-and-next-iterations) for the implemented, planned and unverified areas.
@@ -514,7 +517,7 @@ before ranking a scam case. Timings are demonstration targets; simulated protect
 
 ## Build status: what this repo runs today
 
-Reviewed against remote `main` at [`14e5269`](https://github.com/bharath-blazecode/Team-Astars/commit/14e5269d1640cc50967397511c5eac44204fb454),
+Reviewed against remote `main` at [`60adbde`](https://github.com/bharath-blazecode/Team-Astars/commit/60adbded5fa7da5d7511d6fb5765581baeeb54a0),
 17 Nov 2026 (Brisbane). **Implemented** below means present in this hackathon prototype, not production-ready or
 connected to real banking systems.
 
@@ -523,6 +526,7 @@ connected to real banking systems.
 | **Prorio**, `backend/prorio/` | Implemented | Deterministic 0–100 scoring, bands, gates G1 and G3–G7, ownership-checked account evidence, cross-case payee checks, protocol proposals and an execution trace. G2's protective interaction is simulated in the customer demo |
 | Backend case workflow | Implemented | Final-card intake, priority queue, decisions, manual outcomes, re-ranking, audit trail, customer status and corrections |
 | **Officer dashboard**, `frontend/` | Core implemented; iteration open | Search/filter, concise preview, focused review, evidence/context/activity, completed work, protocol library and learning loop. Further appearance work and new feature ideas are still planned |
+| **Westpac SpeedQ branding** | Implemented and merged, PR #14 | Original dashboard partitions retained; red/deep-red/neutral styling and local Westpac GEL mark applied across the dashboard, insights, live intake, demos and API reference |
 | **Care insights** and case context | Implemented | Graphical urgency/issue/stage/age/decision views, response watch, evidence coverage, score components, masked customer records and an explicit copyable handoff brief |
 | **Multi-officer collaboration** | Implemented | Exclusive claim/release, handoff notes, Mine filter, named completion, live updates and revision checks against stale decisions; limited to one backend worker |
 | **Live intake** | Implemented for scripted demo | Durable unranked drafts, progressive facts, backend-derived evidence, confirmation/cancellation and retry recovery. Live Retell progress still needs integration |
@@ -547,9 +551,11 @@ contained in `main` at review time. A retained feature branch is not evidence of
 
 The subsequent README/status update is merged in [#11](https://github.com/bharath-blazecode/Team-Astars/pull/11).
 The teammate's fix that waits for refreshed insight totals before asserting is merged in
-[#12](https://github.com/bharath-blazecode/Team-Astars/pull/12) and is retained in this branding update. The rename and
-red palette are delivered separately from those merged features; changing the presentation does not complete the
-remaining usability, voice-integration or production work below.
+[#12](https://github.com/bharath-blazecode/Team-Astars/pull/12). The Westpac SpeedQ rename, red palette and requested
+mark are merged in [#14](https://github.com/bharath-blazecode/Team-Astars/pull/14), retaining that fix. The branding
+commit `d057af0` is an ancestor of remote `main` at `60adbde`, and their file trees match. This confirms the branding
+was merged, rather than merely pushed to a feature branch. Further usability, voice-integration and production work
+remains open below.
 
 **Work in progress:** no additional active implementation can be confirmed from those refs. GitHub issue-board and
 PR discussion/status pages were unavailable to this review. Unpushed changes and work in Retell need teammate

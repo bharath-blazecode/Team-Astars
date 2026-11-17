@@ -3,8 +3,9 @@
 The implemented dashboard keeps the priority queue as its first screen; **Care insights** offers a graphical route
 into the work. Shared ownership and **Live intake** extend the handoff while retaining human approval.
 
-**Reviewed 17 Nov 2026 (Brisbane)** against `main` at `5c84495`: insights/context were merged in PR #9 and
-collaboration/live intake in PR #10. Further brainstorming, appearance refinement and manual usability review are
+**Reviewed 17 Nov 2026 (Brisbane)** against `main` at `60adbde`: insights/context were merged in PR #9,
+collaboration/live intake in PR #10, and Westpac SpeedQ branding in PR #14. The original dashboard partitions remain
+in place. Further brainstorming, appearance refinement and manual usability review are
 still planned. The [README roadmap](README.md#remaining-work-and-next-iterations) is the current work checklist.
 
 ## What is actually available

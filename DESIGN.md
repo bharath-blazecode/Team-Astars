@@ -3,8 +3,9 @@
 The officer's first question is “who needs help next?” The first screen answers that with an evidence-ranked queue,
 four live counts and a short preview of one customer. The interface never invents response-time statistics or case data.
 
-**Current state:** the core dashboard, visual insights and shared ownership/live intake are implemented on `main`
-through PR #10 (reviewed 17 Nov 2026, Brisbane). The appearance and feature set remain open to further iteration;
+**Current state:** the core dashboard, visual insights and shared ownership/live intake are implemented on `main`.
+The Westpac SpeedQ red branding is merged through PR #14, verified at `60adbde` on 17 Nov 2026 (Brisbane).
+The appearance and feature set remain open to further iteration;
 see the [remaining work in README](README.md#remaining-work-and-next-iterations). This document describes current
 behavior rather than declaring the design final.
 

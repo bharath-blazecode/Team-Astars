@@ -11,7 +11,8 @@ needed. **Load sample cases** adds a synthetic queue without resetting existing 
 is optional. The API/schema reference at `/docs` is self-hosted and follows the same staff access controls.
 
 **Status reviewed 17 Nov 2026 (Brisbane):** backend case handling, Prorio, persistence, care insights, shared officer
-claims and live intake are implemented on `main` through PR #10 (`5c84495`). This remains a single-worker prototype.
+claims and live intake are implemented on `main`. Westpac SpeedQ branding and the local GEL mark are merged through
+PR #14, verified at `60adbde`. This remains a single-worker prototype.
 The current status and remaining dashboard/integration work are tracked in the
 [main README](../README.md#remaining-work-and-next-iterations); the external Retell configuration is not stored here.
 
