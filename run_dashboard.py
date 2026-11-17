@@ -3,6 +3,7 @@
 import argparse
 import os
 from pathlib import Path
+import re
 import socket
 import subprocess
 import sys
@@ -30,7 +31,9 @@ def existing_dashboard(url):
     try:
         with urlopen(url, timeout=2) as response:
             html = response.read(200_000).decode("utf-8", errors="replace")
-            return "Westpac SpeedQ" in html and "/assets/support-headset.svg" in html
+            return "Westpac SpeedQ" in html and bool(
+                re.search(r'class="brand-mark"[^>]*>\s*<svg\b', html)
+            )
     except (HTTPError, URLError, TimeoutError, OSError):
         return False
 
@@ -72,11 +75,14 @@ def open_page(url, disabled):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--port", type=int, default=8010)
+    parser.add_argument("--port", type=int, help="Local port; defaults to 8010 or the next free port")
     parser.add_argument("--demo", action="store_true", help="Open the scripted customer scenarios")
     parser.add_argument("--no-browser", action="store_true", help="Print addresses without opening a tab")
     parser.add_argument("--db", type=Path, help="Optional separate SQLite file for a rehearsal")
     args = parser.parse_args()
+    explicit_port = args.port is not None
+    if args.port is None:
+        args.port = 8010
     if sys.version_info < (3, 12):
         parser.error("Python 3.12 or newer is required. Install it from https://www.python.org/downloads/windows/")
     if not 1 <= args.port <= 65535:
@@ -86,18 +92,22 @@ def main():
 
     base = f"http://127.0.0.1:{args.port}"
     chosen = base + ("/demo" if args.demo else "/")
-    print(f"Dashboard: {base}/\nScripted scenarios: {base}/demo", flush=True)
     if not port_available(args.port):
-        if existing_dashboard(base + "/"):
-            if args.db:
-                raise RuntimeError("A dashboard is already running; choose another --port for a separate database.")
+        if not args.db and existing_dashboard(base + "/"):
+            print(f"Dashboard: {base}/\nScripted scenarios: {base}/demo", flush=True)
             print("The dashboard is already running on this computer.", flush=True)
             open_page(chosen, args.no_browser)
             return 0
-        raise RuntimeError(
-            f"Port {args.port} is already in use. Close that application or run "
-            f"this launcher with --port {args.port + 1 if args.port < 65535 else 8010}."
-        )
+        if explicit_port:
+            raise RuntimeError(f"Port {args.port} is already in use. Choose another --port.")
+        available = next((port for port in range(8011, 8021) if port_available(port)), None)
+        if available is None:
+            raise RuntimeError("Ports 8010-8020 are busy. Choose a free port with --port.")
+        print(f"Port 8010 is busy; starting this preview on {available} instead.", flush=True)
+        args.port = available
+        base = f"http://127.0.0.1:{args.port}"
+        chosen = base + ("/demo" if args.demo else "/")
+    print(f"Dashboard: {base}/\nScripted scenarios: {base}/demo", flush=True)
 
     python = prepare_python()
     environment = os.environ.copy()

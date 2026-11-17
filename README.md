@@ -640,10 +640,11 @@ for the browser test suites.
 2. Download the project ZIP and use **Extract All**. Open the extracted project folder; running from inside the ZIP
    does not include all the files the server needs.
 3. Double-click **`START_WINDOWS.cmd`**. It creates a private `.dashboard-venv`, installs the existing backend
-   requirements on first use and opens the dashboard in your default browser. Initial setup needs internet access.
+   requirements on first use and opens the demo with its full-width dashboard in your default browser. Initial setup
+   needs internet access.
 4. **Keep that terminal window open** while using the app. Click **Load sample cases** for the synthetic queue.
-   Open `http://127.0.0.1:8010/demo` and choose Sam or Maria for the scripted customer scenarios; no Retell key is
-   needed for those scenes. Live Retell voice/chat still needs private settings.
+   Choose Sam or Maria in the demo toolbar for the scripted customer scenarios; no Retell key is
+   needed for those scenes. The launcher normally uses port 8010 and selects a free port if an older app occupies it. Live Retell voice/chat still needs private settings.
 
 `127.0.0.1` always refers to the computer running the browser. A server started in a cloud environment is not
 reachable through your Windows browser's localhost unless a preview/port-forward connection is supplied. The
@@ -651,7 +652,8 @@ Windows launcher starts the backend on your computer, so both the dashboard and 
 
 To launch from a terminal instead, run `py -3 run_dashboard.py`. Options include `--demo`, `--port 8011` and
 `--no-browser`. The launcher preserves existing cases and private settings; it never resets the database. If the
-same dashboard is already running, another launch opens it without starting a second worker.
+same dashboard with the embedded headset is already running, another launch opens it without starting a second
+worker. An older app with the broken image is not reused.
 
 ### 1. Start the officer workspace and backend
 

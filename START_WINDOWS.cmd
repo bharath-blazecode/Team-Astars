@@ -17,11 +17,11 @@ pause
 exit /b 1
 
 :launch_py
-py -3 "%~dp0run_dashboard.py"
+py -3 "%~dp0run_dashboard.py" --demo
 goto finished
 
 :launch_python
-python "%~dp0run_dashboard.py"
+python "%~dp0run_dashboard.py" --demo
 
 :finished
 set "SPEEDQ_EXIT=%ERRORLEVEL%"

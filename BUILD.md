@@ -29,8 +29,8 @@ Streamlit console is reference material, not the current dashboard.
 
 **Windows:** extract the complete project ZIP, install Python 3.12+ if needed and double-click
 `START_WINDOWS.cmd`. The launcher installs the existing Python requirements into `.dashboard-venv`, starts the
-loopback server and opens the browser. Keep its terminal open. Both `http://127.0.0.1:8010/` and `/demo` then run on
-your computer. A cloud machine's localhost is separate; opening its address directly on Windows does not connect to
+loopback server and opens the scripted demo in your browser. Keep its terminal open. Both the dashboard and `/demo`
+then run on your computer, normally on port 8010 (or the next free port shown by the launcher). A cloud machine's localhost is separate; opening its address directly on Windows does not connect to
 that cloud server. See [the Windows quick start](README.md#windows-open-it-on-your-own-computer).
 
 From the repository root, with Python 3.12 available:
