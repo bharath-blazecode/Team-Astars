@@ -4,6 +4,8 @@ SpeedQ is a completed hackathon prototype with two interfaces and one FastAPI pr
 
 ![Component architecture and external-service boundary](../assets/diagrams/architecture.svg)
 
+The [customer-support workflow](workflow.md) is a separate view of routing and human decisions; the architecture diagram above shows technical components and state.
+
 ## Components
 
 | Component | Responsibility | Source |

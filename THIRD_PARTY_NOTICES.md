@@ -4,7 +4,7 @@
 
 SpeedQ is a Team Astars project. Credits: Karan Rooprai, Amanraj Dhillon, Bharath Sampath, Aishwarya Naidu and Agamvir Bal. **No repository-wide software licence has been agreed or added.** Public visibility is not a general reuse grant. Choosing a licence for the team's work remains an owner/team decision; this cleanup does not assign contributors' rights.
 
-The current support-headset SVG is original project artwork, documented in [BRANDING.md](BRANDING.md). New repository screenshots show the team's running application with synthetic data. The diagrams in `assets/diagrams/` are original documentation with editable Graphviz sources. Regenerate using `dot -Tsvg input.dot -o output.svg` (or `-Tpng`); Graphviz itself is a development tool, not bundled application code.
+The current support-headset SVG is original project artwork, documented in [BRANDING.md](BRANDING.md). New repository screenshots show the team's running application with synthetic data. The diagrams in `assets/diagrams/` are original documentation. The workflow uses source-drawn SVG informed by the team’s whiteboard and generated layout previews; the architecture uses Graphviz. See [diagram sources and rendering](assets/diagrams/README.md). Graphviz and the headless renderer are development tools, not bundled application code.
 
 ## Vendored Retell browser bundle
 

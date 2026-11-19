@@ -27,9 +27,9 @@ These are demonstrated workflows, not measured reductions in call time, fraud lo
 
 ## How it works
 
-![Escalated case workflow from customer need through confirmed card, deterministic prioritisation, officer decision and recorded outcome](assets/diagrams/pipeline.svg)
+![SpeedQ workflow: four Clario intake routes, a customer-confirmed service card, deterministic Prorio proposals and officer decisions](assets/diagrams/pipeline.svg)
 
-Routine questions can finish during intake. Escalated needs become ranked cases. The customer conversation stays in its own app, with an optional preview under **Live intake** rather than a permanent chat column.
+Routine questions can finish during intake. Escalated needs become ranked cases only after card confirmation. [Explore the four routes and feedback loop](docs/workflow.md), redrawn from the team’s whiteboard and checked against the implementation. The customer conversation stays in its own app, with an optional preview under **Live intake** rather than a permanent chat column.
 
 - **Clario:** conversation and structured intake through configured Retell voice/chat, with a local scripted demonstration available without credentials.
 - **Prorio:** deterministic Python scoring, safety gates and protocol proposals. It is not a trained model; free-text summaries do not determine rank.
@@ -129,6 +129,7 @@ The team completed and submitted a narrated presentation-slide video on **17 Nov
 ## Documentation
 
 - [BUILD.md](BUILD.md): installation, tests, routes and troubleshooting.
+- [Workflow](docs/workflow.md): four intake routes, confirmation, officer decisions and reviewed protocol feedback.
 - [Architecture](docs/architecture.md): components, state, tradeoffs and production boundaries.
 - [Demo guide](docs/demo.md): local scenarios and collaboration walkthrough.
 - [Technical reference](docs/reference/TECHNICAL_REFERENCE.md): score rules, gates, protocols, APIs and settings.
