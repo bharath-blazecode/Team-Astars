@@ -21,3 +21,5 @@ SQLite persists cases, drafts, ownership, audit records and approved protocol ve
 Prorio uses structured fields and owned evidence; free-text summaries do not determine rank. Its outputs are deterministic for the same inputs, evidence, time and active protocol. All banking effects remain simulated or draft records.
 
 Live Retell integration code is included. The hosted agents, prompts, knowledge base and account configuration are external. Fake-client tests do not prove a live call or phone transfer succeeded in the submitted recording.
+
+For a bank implementation, the proposed direction is a bank-owned conversational agent with bank-controlled identity, retrieval and tool access. A new adapter would replace the current Retell-specific session/signature layer while preserving the validated intake and decision pattern. See [bank-owned deployment](../docs/bank-deployment.md); the target design is separate from this prototype's supported live configuration.
