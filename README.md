@@ -122,7 +122,7 @@ Seven backend suites and 103 browser checks passed during the 19 November 2026 c
 
 **Karan Rooprai (team lead), Amanraj Dhillon, Bharath Sampath, Aishwarya Naidu and Agamvir Bal.**
 
-The team completed and submitted a narrated presentation-slide video on **17 November 2026**. The final deck has **14 slides**. The project was not selected for the next stage; no finalist or award claim is made. Personal responsibilities are not inferred from commit counts.
+The team completed and submitted a narrated presentation-slide video on **17 November 2026**. The final deck has **14 slides**. Personal responsibilities are not inferred from commit counts.
 
 [Submission record and final deck](docs/submission/README.md) · [Portfolio and résumé wording](docs/portfolio.md)
 
