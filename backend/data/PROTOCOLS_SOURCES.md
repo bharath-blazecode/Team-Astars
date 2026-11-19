@@ -36,7 +36,7 @@ So the database follows these rules:
 Two follow-ups remain open:
 
 - **Record the applicable permission.** Ask the competition organisers or Westpac's authorised permission owner
-  about public help summaries, the dashboard logo and the recorded slide presentation. Mentor feedback is useful;
+  about public help summaries, the retained project name and the historical slide presentation. The current dashboard uses original headset artwork. Mentor feedback is useful;
   record the rule or authorisation and its scope rather than treating informal approval as blanket permission.
 - **Check the external Retell knowledge base.** Earlier team notes report 406 crawled Westpac pages in a third-party
   service; its current contents and permission were not inspected in this repository review. Confirm authorised
@@ -58,12 +58,12 @@ guidance; keep the independent Team Astars attribution and avoid implying bank a
 
 ## What each protocol contains
 
-`issue_type`, `title`, `version`, `harm_category` (the README harm row it scores under), `min_band` (a gate, if any),
+`issue_type`, `title`, `version`, `harm_category` (the technical-reference harm row it scores under), `min_band` (a gate, if any),
 `clario_can_answer` (what Clario may tell the customer straight away), `protect_first` (the protective action offered
 before queuing, always the customer's choice), `steps` (who does what, each with a source), `ai_may`, `officer_must`,
 `required_checks`, `customer_message` (template), `timeframes` (each with a source), `notes`, `sources`.
 
-New issue types compared with the README harm table: SCAM_ALREADY_PAID, VERIFY_CONTACT, UNAUTHORISED_ONLINE_BANKING,
+Issue types mapped to the technical-reference harm table: SCAM_ALREADY_PAID, VERIFY_CONTACT, UNAUTHORISED_ONLINE_BANKING,
 IDENTITY_THEFT, LOGIN_HELP, ACCOUNT_RESTRICTED_ID_CHECK, PAYMENT_LIMIT_CHANGE, CARD_DECLINED, CARD_ACTIVATION,
 PENDING_TRANSACTION, DIRECT_DEBIT_STOP, BPAY_MISTAKE, PAYID_ISSUE, FAMILY_VIOLENCE_FINANCIAL_ABUSE,
 TRUSTED_PERSON_ACCESS, ELDER_FINANCIAL_ABUSE, BEREAVEMENT, GAMBLING_HARM, ACCOUNT_CLOSURE, OUTAGE_INCIDENT. Each maps

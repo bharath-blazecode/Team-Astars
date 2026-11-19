@@ -1,6 +1,6 @@
 """Prorio check: python -m prorio.selftest  (from the backend folder). No server, no database writes.
 
-Covers every worked example in the README's "How priority is worked out", the gates, the firewall and that every
+Covers the worked examples in docs/reference/TECHNICAL_REFERENCE.md, the gates, structured-input boundary and every
 protocol in the Protocol Database produces a proposal.
 """
 import os
@@ -10,7 +10,7 @@ os.environ.setdefault("NRY_DB", ":memory:")
 import mock_data as md  # noqa: E402
 
 from prorio import agent, evidence, protocols  # noqa: E402
-from prorio.propose import ACTIONS  # noqa: E402
+from prorio.propose import ACTIONS, _nice  # noqa: E402
 
 NOW = md.parse_ts(md.DEMO_NOW_DEFAULT)
 
@@ -34,7 +34,11 @@ def check(name, c, score, band, **kw):
 
 def main():
     assert md.demo_now() == NOW or os.environ.get("NRY_NOW"), "demo clock"
-    print("Worked examples (README):")
+    # Preserve readable delivery dates on Windows as well as Unix.
+    assert _nice("2026-11-03") == "3 Nov 2026"
+    assert _nice("2026-11-19") == "19 Nov 2026"
+    assert _nice(None) is None
+    print("Worked examples (technical reference):")
     maria = check("Maria: scam, $4,800 to a payee added 2 h before", card(
         "SCAM_IN_PROGRESS", "CUST-001", ["TX-9001"], ["CUSTOMER_REPORTS_PRESSURE", "VULNERABILITY_CUES"]), 100, "P1")
     assert maria[0]["signals"] == ["LARGE_TRANSFER", "NEW_PAYEE_24H"]

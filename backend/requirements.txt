@@ -1,5 +1,7 @@
-fastapi
-uvicorn
-pydantic>=2
-httpx
-retell-sdk
+# Direct dependency versions validated during the 19 November 2026 portfolio cleanup.
+# This is not a full transitive lockfile; frontend test dependencies use package-lock.json.
+fastapi==0.163.1
+uvicorn==0.54.0
+pydantic==2.14.3
+httpx==0.28.1
+retell-sdk==6.2.21

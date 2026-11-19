@@ -3,10 +3,7 @@
 The implemented dashboard keeps the priority queue as its first screen; **Care insights** offers a graphical route
 into the work. Shared ownership and **Live intake** extend the handoff while retaining human approval.
 
-**Reviewed 17 Nov 2026 (Brisbane)** against `main` at `a184be1`: insights/context (#9), collaboration/live intake
-(#10), live Clario (#13), branding (#14), pale navigation/controls (#18) and automatic `.env` loading (#19) are merged.
-The original dashboard partitions remain in place. Further brainstorming and manual usability review remain open;
-the selected submission format is a narrated [presentation-slide video](docs/video/SHOT_LIST.md). The [README roadmap](README.md#remaining-work-and-next-iterations) is the current work checklist.
+**Status:** the hackathon prototype and presentation-slide video were completed and submitted on 17 November 2026. The additions below are implemented; the candidate ideas are optional extensions. See the [submission record](docs/submission/README.md) and [architecture](docs/architecture.md) for verified scope and limits.
 
 ## What is actually available
 
@@ -17,7 +14,7 @@ the selected submission format is a narrated [presentation-slide video](docs/vid
 | `backend/data/cards.json` | 6 | Current/mock block state and replacement delivery milestones | Expected delivery is not proof of arrival |
 | `backend/data/protocols.json` | 31 protocols | Harm points, minimum bands, checks, actions and sources | Procedures do not establish that checks occurred in real life |
 | Saved case and audit records | Varies by local workspace | Current stages, scores, score parts, decisions, pickup history, repeat contacts and protocol suggestions | Small demonstration history; case creation uses the live clock |
-| Case assignments/revisions and intake drafts | Varies by local workspace | Current officer, claim/release/completion events, draft facts and customer confirmation | Local-demo identities are simulations; drafts come from scripted scenes or signed Clario tools, with live service configuration still requiring rehearsal |
+| Case assignments/revisions and intake drafts | Varies by local workspace | Current officer, claim/release/completion events, draft facts and customer confirmation | Local-demo identities are simulations; drafts come from scripted scenes or signed Clario tools, with external live-service setup validated separately |
 
 Account evidence is anchored to the existing fixed demo clock. Current case age uses the live clock. Both are labelled
 in the interface; joining them into a single unqualified “today” chart would misrepresent the data.
@@ -29,7 +26,7 @@ in the interface; joining them into a single unqualified “today” chart would
 | Interactive urgency ring and issue bars | Understand the queue and open the matching cases directly | Counts come from active saved cases; the charts filter the real queue |
 | Case-stage flow and open-age distribution | Find waiting, manual, completed and ageing work | Stages are mutually exclusive; age includes active work already in review |
 | Decision distribution | See approved, modified and manual decisions | Counts decisions once; does not claim accuracy, recovery or satisfaction |
-| Response watch | Surface urgent cases that still need their first pickup | Current P1/P2 bands, actual creation times and the README's 2/30-minute project targets; never presented as bank SLAs |
+| Response watch | Surface urgent cases that still need their first pickup | Current P1/P2 bands, actual creation times and the technical reference's 2/30-minute project targets; never presented as bank SLAs |
 | Evidence coverage and language support | Find cases requiring verification or language assistance | Separates account signals from conversation cues; counts active cases rather than inventing confidence percentages |
 | Linked outgoing payment total | Understand the size of the payments being reviewed | Deduplicates transaction IDs, checks customer ownership, excludes completed cases, and labels AUD amounts as unconfirmed outgoings rather than losses |
 | Visual priority components | Explain why the backend selected a priority | Uses backend score parts; explicitly reconciles caps, floors and overrides instead of treating the subtotal as the final score |

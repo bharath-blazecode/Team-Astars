@@ -1,11 +1,8 @@
+> **Historical implementation plan.** Shared claims, revisions, handoffs and durable intake drafts are implemented. The hackathon submission is complete; use [architecture](docs/architecture.md) and [BUILD.md](BUILD.md) for current behaviour and verification. Prospective wording below records the original plan.
+
 # Shared ownership and live intake
 
-**Implemented and merged:** [PR #10](https://github.com/bharath-blazecode/Team-Astars/pull/10), verified in remote
-`main` at `5c84495`, and still present in remote `main` at `a184be1` on 17 Nov 2026 (Brisbane). Live Clario tools (#13),
-pale dashboard navigation (#18) and `.env` setup (#19) are also merged. This document is the implemented flow and
-walkthrough. Further feature candidates and live rehearsal remain in the
-[README roadmap](README.md#remaining-work-and-next-iterations). The submission uses
-[presentation slides with narration](docs/video/SHOT_LIST.md).
+**Implemented:** exclusive claims, handoffs, stale-revision protection, live updates and durable intake. The hackathon submission is complete. [BUILD.md](BUILD.md) describes current checks; [the submission record](docs/submission/README.md) links the finished presentation-slide video. Optional service validation is documented separately in [live services](docs/live-services.md).
 
 ## Implemented flow
 

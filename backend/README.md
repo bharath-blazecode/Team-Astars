@@ -1,139 +1,23 @@
-# Backend (Clario intake + Prorio)
+# SpeedQ backend
 
-```
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-uvicorn main:app --reload --host 127.0.0.1 --port 8000
-```
+FastAPI serves the officer UI, customer/demo pages, intake tools and deterministic Prorio engine. The hackathon prototype was completed and submitted on **17 November 2026**.
 
-This also serves the officer dashboard at `http://127.0.0.1:8000`. No frontend build or separate UI process is
-needed. **Load sample cases** adds a synthetic queue without resetting existing work. The old Streamlit dashboard
-is optional. The API/schema reference at `/docs` is self-hosted and follows the same staff access controls.
+From the repository root, follow [BUILD.md](../BUILD.md) for Windows or macOS/Linux setup. From `backend/` with dependencies installed:
 
-**Status reviewed 17 Nov 2026 (Brisbane):** backend case handling, Prorio, persistence, care insights, shared officer
-claims and live intake are implemented on `main`. Westpac SpeedQ naming/palette (#14), live Clario (#13), pale
-navigation (#18), `.env` loading (#19) and the officer-first demo (#21) are included in the reviewed `main` at
-`3007368`. This revision serves an original customer-service headset asset instead of the bank logo. The application
-remains a single-worker prototype.
-The current status and remaining dashboard/integration work are tracked in the
-[main README](../README.md#remaining-work-and-next-iterations). The [build guide](../BUILD.md) and
-[presentation-slide plan](../docs/video/SHOT_LIST.md) describe current delivery work.
-
-For live Clario, copy `.env.example` to `.env` only if you do not already have a settings file. Fill in the private
-Retell key and verify the agent IDs and tunnel hostname. The backend loads `.env` at startup; existing environment
-variables win. Real credentials remain git-ignored. Restart after changes and follow
-[the live checklist](../LIVE_TEST_CHECKLIST.md); the external agent prompts/functions are configured in Retell.
-
-Checks: `python -m prorio.selftest` (Prorio's scoring, gates and proposals), `python test_api.py` (the API end to end),
-`python test_db.py` (persistence across a restart), `python test_workspace.py` (dashboard integration and security).
-`python test_insights.py` covers the analytics, customer scope, payment totals and evidence/live-clock boundaries.
-`python test_collaboration.py` covers officer claim races, ownership transfer, stale decisions, identity, drafts and restart recovery.
-`python test_clario_live.py` checks signed Retell tools, customer session scope and `.env` precedence with a faked
-client, without live calls.
-Browser tests: `cd ../frontend && npm ci && npm test` (Node 22.12+ and Chromium). All customer data is synthetic.
-
-Staff endpoints reject remote clients in local demo mode. Set `NRY_STAFF_PASSWORD` and optionally `NRY_STAFF_USER`
-to enable Basic authentication, and use HTTPS for remote connections. Set `NRY_ALLOWED_HOSTS` to the intended hostname.
-In this mode, configure `NRY_WEBHOOK_SECRET` for intake; the browser never receives these secrets. Basic authentication
-is a prototype control, not production SSO or role-based authorisation. See `../DESIGN.md` for boundaries.
-
-`NRY_STAFF_ACCOUNTS` optionally supplies a secure JSON mapping for distinct authenticated officers. The server uses
-that account identity for claims and decisions. Local-only demo identity switching does not grant remote access and
-is ignored in authenticated mode. Keep a single backend worker: the claim lock and SSE revision counter are process-local.
-
-`GET /workspace/events` invalidates staff snapshots after changes. `GET /workspace/intake` lists unranked drafts.
-The draft start/update/confirm/cancel routes use the same intake secret policy as the existing webhook. Confirmation
-creates a ranked case only after the customer confirms; a persisted internal association protects retries. Existing
-intake clients can keep using the final-card webhook. Modern officer clients should supply `expected_revision` on
-claims and mutations; ownership and already-decided checks also protect legacy clients that omit this optional field.
-
-`GET /workspace/insights` aggregates the saved workspace under the case-store lock. It does not reset cases or execute
-actions. `GET /case/{id}/context` returns masked accounts and owned transactions for that case's customer, with the
-fixed evidence clock and a separate current snapshot time. Both endpoints inherit staff access control. See
-[FEATURE_REVIEW.md](../FEATURE_REVIEW.md) for metric definitions and limits.
-
-## Prorio
-
-`prorio/` is the Priority and Protocol agent. It is plain, deterministic code: no language model and no outside API.
-It sends no data to an external model. See "How Prorio works" in the top-level README. Scores are judged against a
-fixed demo clock (`NRY_NOW`, default 15 Nov 2026 12:00 UTC); waiting time uses the real clock.
-
-## Database
-
-SQLite (`backend/nry.db`, stdlib, created on first run, git-ignored). Cases and their audit logs, officer claims and
-revisions, intake drafts, mock account changes (SafeBlock, blocked cards, draft reference counters), protocol suggestions
-and approved protocol versions survive a backend restart. It is a single connection behind a lock: fine for a demo, not for concurrent production
-writers. Pre-Prorio case records are skipped on start; current older case records acquire ownership/revision defaults
-from their audit history where available.
-
-For a clean rehearsal, `curl -X POST localhost:8000/admin/reset` or **Reset demo** on `/demo` clears cases, drafts,
-mock changes, suggestions and approved versions. The endpoint inherits staff authentication and local-only demo
-access; authenticated requests require staff credentials. The current dashboard has no reset button.
-`NRY_DB=/path/x.db` points at a different file.
-
-## Trigger the demo without Clario
-
-Same body works on `/case` (testing, returns the full card) and `/webhook/retell` (Clario, returns a short reply).
-These examples assume unauthenticated loopback demo mode. Configured intake secrets must be sent in
-`x-webhook-secret`; remote or staff-authenticated intake requires the secret to be configured.
-
-```
-# Sam: card delivery answered by Clario. Stored, NOT in the queue
-curl -s localhost:8000/case -H 'content-type: application/json' -d '{"customer_id":"CUST-002","customer_name":"Sam T.","issue_type":"CARD_DELIVERY","status":"TIER1_RESOLVED","summary_en":"Card dispatched 12 Nov, due 19 Nov"}'
-
-# Sam, not satisfied -> 5, P4 (AI acts after one-click approval). Use CUST-005 for a second one
-curl -s localhost:8000/case -H 'content-type: application/json' -d '{"customer_id":"CUST-002","customer_name":"Sam T.","issue_type":"CARD_DELIVERY","status":"QUEUED","summary_en":"Card not here yet; wants help"}'
-
-# Priya: $89 charge she didn't make, card locked during the chat -> 55, P3
-curl -s localhost:8000/case -H 'content-type: application/json' -d '{"customer_id":"CUST-003","customer_name":"Priya S.","issue_type":"FRAUD_UNAUTHORISED","linked_transactions":"TX-7001","card_locked":true,"summary_en":"$89 charge I did not make"}'
-
-# Minh: missing $650 rent, Vietnamese -> 55, P3
-curl -s localhost:8000/case -H 'content-type: application/json' -d '{"customer_id":"CUST-004","customer_name":"Minh N.","issue_type":"MONEY_MISSING","language":"vi","language_label":"Vietnamese","linked_transactions":"TX-8001","summary_en":"Missing $650 rent payment","summary_customer_lang":"Mất khoản tiền thuê nhà $650"}'
-
-# Jordan: locked out after a password change from a new phone, can't buy groceries -> 60, P2
-curl -s localhost:8000/case -H 'content-type: application/json' -d '{"customer_id":"CUST-006","customer_name":"Jordan L.","issue_type":"ACCOUNT_ACCESS","risk_signals":"ESSENTIALS_AT_RISK","summary_en":"Locked out after a password change I did not make"}'
-
-# Maria: scam in progress -> 100, P1, jumps to the top; reply says WARM_TRANSFER_FRAUD
-curl -s localhost:8000/webhook/retell -H 'content-type: application/json' -d '{"customer_id":"CUST-001","customer_name":"Maria R.","issue_type":"SCAM_IN_PROGRESS","linked_transactions":"TX-9001","risk_signals":"CUSTOMER_REPORTS_PRESSURE,VULNERABILITY_CUES","safeblock_activated":true,"summary_en":"Caller says someone claiming to be from Westpac told her to move her savings.","case_reference":"WGM-0412"}'
-
-# Bare scam claim, nothing on the account -> 79, P2, "officer to verify" (gate G1)
-curl -s localhost:8000/case -H 'content-type: application/json' -d '{"customer_id":"CUST-002","issue_type":"SCAM_IN_PROGRESS","risk_signals":"CUSTOMER_REPORTS_PRESSURE"}'
-
-curl -s localhost:8000/queue
+```bash
+python -m uvicorn main:app --host 127.0.0.1 --port 8000
 ```
 
-## Officer actions
+Use one worker. No separate frontend process is required. The default loopback demo uses synthetic data; configured staff accounts enable prototype Basic authentication, not production SSO/MFA.
 
-Use the current dashboard for the complete claim/review workflow. The API also supports `/pickup` and `/release`;
-only the assigned officer may change a claimed case. Current clients should send `expected_revision` from the last
-case read on every mutation. Staff authentication determines the audit actor, regardless of a body-supplied name.
-The examples below are local-demo calls on unclaimed cases; substitute current references and the owning identity
-when following up work already claimed or decided.
+- [Architecture, persisted state and process-local limits](../docs/architecture.md)
+- [API, scoring, protocol and environment reference](../docs/reference/TECHNICAL_REFERENCE.md)
+- [External Retell configuration](../docs/live-services.md)
+- [Validation commands](../BUILD.md#validation)
+- [Protocol source notes](data/PROTOCOLS_SOURCES.md)
 
-```
-# what Prorio proposes, and what it did
-curl -s localhost:8000/case/WGM-0412/proposal
-curl -s localhost:8000/case/WGM-0412/trace
+SQLite persists cases, drafts, ownership, audit records and approved protocol versions. `NRY_DB` selects another database; the default is ignored `backend/nry.db`. The reset operation clears the selected workspace, so use a separate database for rehearsals.
 
-# approve (APPROVE), run an edited list (MODIFY, becomes a protocol suggestion), or handle it yourself (MANUAL)
-curl -s localhost:8000/case/WGM-0412/decision -H 'content-type: application/json' -d '{"decision":"APPROVE","officer":"j.officer"}'
-curl -s localhost:8000/case/WGM-0900/decision -H 'content-type: application/json' -d '{"decision":"MODIFY","officer":"j.officer","note":"Customer wants a new card","actions":[{"action":"SEND_CUSTOMER_UPDATE"},{"action":"ORDER_REPLACEMENT_CARD"}]}'
+Prorio uses structured fields and owned evidence; free-text summaries do not determine rank. Its outputs are deterministic for the same inputs, evidence, time and active protocol. All banking effects remain simulated or draft records.
 
-# re-rank: exactly one of band / score (0-100), reason required, logged. The score is then pinned
-curl -s localhost:8000/case/WGM-0901/rerank -H 'content-type: application/json' -d '{"band":"P1","reason":"Customer is vulnerable"}'
-
-# the customer's view of their card (no score)
-curl -s localhost:8000/case/WGM-0412/status
-curl -s localhost:8000/audit/WGM-0412
-```
-
-## Learning loop
-
-```
-curl -s localhost:8000/suggestions
-curl -s localhost:8000/suggestions/SUG-0001/approve -H 'content-type: application/json' -d '{"owner":"team lead"}'
-curl -s localhost:8000/protocols/FRAUD_UNAUTHORISED
-curl -s localhost:8000/protocols/FRAUD_UNAUTHORISED/rollback -H 'content-type: application/json' -d '{"owner":"team lead"}'
-```
-
-A suggestion can be approved once it has been made `NRY_SUGGEST_THRESHOLD` times (default 3; set 1 for a quick demo).
+Live Retell integration code is included. The hosted agents, prompts, knowledge base and account configuration are external. Fake-client tests do not prove a live call or phone transfer succeeded in the submitted recording.
