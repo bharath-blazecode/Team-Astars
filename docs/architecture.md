@@ -41,3 +41,9 @@ Default staff access is loopback-only. Optional distinct Basic accounts, origin/
 This is not production banking authentication or an independently certified secure system. Real deployment would need SSO/MFA, customer verification, role separation, shared coordination, monitoring, retention policy and real banking adapters. All current banking actions are simulated or draft records; no real money moves.
 
 See [technical reference](reference/TECHNICAL_REFERENCE.md) for exact APIs/settings and [live services](live-services.md) for the hosted-service boundary.
+
+## Bank-owned deployment direction
+
+For bank adoption, the proposed design replaces the hackathon's Retell conversational adapter with a bank-built and operated agent stack, integrated with bank identity, authorised tools and approved knowledge sources. The confirmed-card, deterministic priority and officer-decision boundaries remain the architectural pattern. APIs can be internal interfaces between bank-owned components; agent ownership does not imply training a new foundation model or removing authenticated service boundaries.
+
+[Bank-owned deployment](bank-deployment.md) separates this target design from the runnable prototype and describes the adapter boundary and safety responsibilities.

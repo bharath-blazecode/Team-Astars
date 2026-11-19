@@ -97,6 +97,8 @@ The repository includes six synthetic customers, 31 transactions, six card recor
 | Local demo identities and optional staff Basic authentication | Production customer verification, SSO/MFA and organisation roles |
 | Automated backend/browser checks | Evidence of live call quality, phone transfer, officer usability or business impact |
 
+**Bank deployment direction:** the proposed bank implementation uses a bank-owned conversational agent and bank-controlled data/tool access, while preserving the confirmed service card, deterministic prioritisation and officer approval workflow. The bank could host its own speech/model stack and replace the hackathon Retell integration. Authenticated internal APIs can still connect those components. See [bank-owned deployment and safety boundaries](docs/bank-deployment.md).
+
 The submitted recording is historical evidence. Live-service code is present, but the precise live voice/chat scope demonstrated in that recording has not been independently verified here. See [integration boundaries](docs/live-services.md), [architecture and limitations](docs/architecture.md) and [data provenance](backend/data/PROTOCOLS_SOURCES.md).
 
 ## Validation
@@ -131,6 +133,7 @@ The team completed and submitted a narrated presentation-slide video on **17 Nov
 - [BUILD.md](BUILD.md): installation, tests, routes and troubleshooting.
 - [Workflow](docs/workflow.md): four intake routes, confirmation, officer decisions and reviewed protocol feedback.
 - [Architecture](docs/architecture.md): components, state, tradeoffs and production boundaries.
+- [Bank-owned deployment](docs/bank-deployment.md): agent ownership, integration boundaries and proposed bank controls.
 - [Demo guide](docs/demo.md): local scenarios and collaboration walkthrough.
 - [Technical reference](docs/reference/TECHNICAL_REFERENCE.md): score rules, gates, protocols, APIs and settings.
 - [Design](DESIGN.md), [feature/data review](FEATURE_REVIEW.md) and [branding](BRANDING.md).
