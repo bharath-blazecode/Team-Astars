@@ -15,6 +15,8 @@ SpeedQ explores how a confirmed customer-service card, evidence-based priority r
 
 This is team-level wording. Before publishing a stronger personal bullet, confirm which components you personally designed, implemented, integrated, tested or presented. Commit counts alone do not establish ownership. Do not copy a placeholder claim into a résumé.
 
+The [whiteboard-to-prototype walkthrough](workflow.md) explains the original four-route idea and the implementation decisions behind the final diagram.
+
 ## Evidence worth discussing
 
 - Why structured deterministic scoring was kept separate from conversational intake.

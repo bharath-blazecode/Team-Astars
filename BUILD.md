@@ -89,7 +89,7 @@ Both browser suites start temporary servers and databases. They preserve the dev
 
 [CI](.github/workflows/ci.yml) runs backend suites on Linux and Windows, plus browser checks and documentation-link validation on Linux. Local cleanup validation passed seven backend suites and 103 browser checks. Automated accessibility checks complement, rather than replace, manual officer and screen-reader evaluation.
 
-For documentation-only checks: `python tools/check_docs.py`. For fresh portfolio captures, activate the same environment and run `node tools/capture-screenshots.cjs` after installing frontend development dependencies. The capture utility creates and removes its own temporary database.
+For documentation-only checks: `python tools/check_docs.py`. For fresh portfolio captures, activate the same environment and run `node tools/capture-screenshots.cjs` after installing frontend development dependencies. The capture utility creates and removes its own temporary database. To export the editable workflow SVG as a PNG, run `node tools/render-diagrams.cjs`; see [diagram sources](assets/diagrams/README.md).
 
 ## Optional live Clario
 
