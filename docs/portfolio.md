@@ -29,7 +29,13 @@ The cleanup validation passed seven backend suites and 103 browser checks on Lin
 
 ## Team credits
 
-Karan Rooprai (lead), Amanraj Dhillon, Bharath Sampath, Aishwarya Naidu and Agamvir Bal.
+Team Astars members, listed alphabetically by given name:
+
+- Agamvir Bal
+- Aishwarya Naidu
+- Amanraj Dhillon
+- Bharath Sampath
+- Karan Rooprai
 
 ## Remaining evidence gaps
 

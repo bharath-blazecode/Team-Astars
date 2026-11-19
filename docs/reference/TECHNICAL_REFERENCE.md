@@ -213,8 +213,8 @@ Some protocols switch a case to another one when the facts change: `VERIFY_CONTA
 soon as anything is at risk, `PENDING_TRANSACTION` is routed to a fraud, dispute or scam protocol, and
 `TRUSTED_PERSON_ACCESS` becomes `ELDER_FINANCIAL_ABUSE` if the customer is being pressured.
 
-**Officers teach, leads approve.** An officer's Modify or Manual decision becomes a protocol *suggestion*, not a rule.
-When the same change has been suggested several times (for example 3), it is offered to a protocol owner (a team lead)
+**Officers suggest, protocol reviewers approve.** An officer's Modify or Manual decision becomes a protocol *suggestion*, not a rule.
+When the same change has been suggested several times (for example 3), it is offered to a protocol reviewer
 who approves or rejects it. Every protocol has a version number, every proposal shows which version it used, every
 change is recorded in the protocol's `change_log`, and any change can be rolled back. The protocols start at v2.0; the
 four changed after the team's review are at v2.1. In the demo, an officer modifies a proposal and it appears as the
