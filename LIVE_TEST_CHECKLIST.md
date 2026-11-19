@@ -1,12 +1,8 @@
 # Live Clario test: end-to-end checklist
 
-Goal: a real Retell call (or chat) as a demo customer, and watch the card form and rank on the officer screen.
-Full background is in the [README live guide](README.md#live-clario-retell-voice-and-chat). Tick boxes only after
-checking the actual demo setup. The backend loads `backend/.env` at startup (merged in PR #19); shell variables
-already set take precedence. Keep real keys in that ignored file or your private environment, never in Git or slides.
+This is an **optional environment-specific live-service validation checklist**, not unfinished hackathon submission work. The presentation-slide video was completed and submitted on 17 November 2026; see the [submission record](docs/submission/README.md).
 
-The submission is a [narrated presentation-slide video](docs/video/SHOT_LIST.md). This live checklist is for validating
-the service and rehearsing the optional on-site demonstration; it does not mark the slide deck or export complete.
+Use the [live-service setup guide](docs/live-services.md) first. Tick boxes only after checking your own Retell configuration. Existing unchecked boxes are not evidence that a feature failed in the submitted demo, and submission alone does not prove these checks passed. Keep real keys in ignored `backend/.env` or private environment variables.
 
 ## A. Have ready (5 min)
 

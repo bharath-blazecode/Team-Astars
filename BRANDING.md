@@ -4,9 +4,7 @@
 SVG for Team Astars. The Westpac bank logo is removed from the current source and replaced in the sidebar and
 favicons. The project name, pale rose navigation and accepted dashboard partitions are retained.
 
-**Source reviewed:** remote `main` at `3007368` on 17 Nov 2026 (Brisbane). The earlier naming/palette work (#14),
-light sidebar/controls (#18), slide documentation (#20) and officer-first demo (#21) are merged. This revision
-replaces the former bank mark at the team's request; historical commits retain their original snapshots.
+**Status:** current application branding uses the original headset; historical commits and the submitted deck retain their original snapshots. New portfolio screenshots are captured from the current application.
 
 ## Palette and interaction
 
@@ -46,9 +44,7 @@ old asset URL returns 404. A new favicon URL avoids retaining the old mark throu
 
 ## Logo use in the dashboard and presentation
 
-Use the original headset symbol and fresh prototype screenshots for the slide presentation. Replace any bank logo
-still present in the externally maintained deck before export; that external deck is not edited by this repository
-change. The [slide plan](docs/video/SHOT_LIST.md) and [narration script](docs/video/SCRIPT.md) describe the production work.
+Use the original headset symbol and fresh prototype screenshots for new material. The [final submitted deck and video](docs/submission/README.md) are preserved as historical artifacts. Any updated portfolio deck should be clearly labelled as revised. Replacing the application logo does not retroactively alter the recording or submitted slides.
 
 The **Westpac SpeedQ** project name remains at the team's request, alongside Team Astars and the independent
 hackathon-prototype/synthetic-data disclosures. Removing the bank artwork is not a claim of official approval or a

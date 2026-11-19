@@ -1,0 +1,32 @@
+digraph SpeedQ {
+  graph [rankdir=LR, bgcolor="white", pad="0.3", nodesep="0.4", ranksep="0.5", fontname="DejaVu Sans", fontsize=22, label="SpeedQ · prototype architecture", labelloc=t];
+  node [shape=box, style="rounded,filled", color="#DEDAD8", fillcolor="#F7F7F6", fontname="DejaVu Sans", fontsize=13, fontcolor="#1F2029", margin="0.18,0.15"];
+  edge [color="#705D59", arrowsize=0.7, fontname="DejaVu Sans", fontsize=10, fontcolor="#535353"];
+  subgraph cluster_browser {
+    label="Browser · repository UI"; fontsize=15; color="#DEDAD8"; style=rounded;
+    officer [label="Officer workspace\nQueue · review · insights"];
+    customer [label="Customer app\nScripted demo or live controls"];
+  }
+  subgraph cluster_server {
+    label="One FastAPI process · repository backend"; fontsize=15; color="#E9B9B2"; style=rounded;
+    api [label="Same-origin APIs\nAccess checks · claims · revisions", fillcolor="#FCEDEA", color="#B5120C"];
+    intake [label="Intake drafts\nConfirmation · retry recovery"];
+    prorio [label="Prorio · deterministic\nEvidence → score → protocol", fillcolor="#FCEDEA", color="#B5120C"];
+    approval [label="Human-reviewed\nprotocol changes"];
+  }
+  retell [label="External: hosted Retell\nAgents · prompts · knowledge base\nOwner configuration + credentials", style="rounded,dashed,filled", fillcolor="#FFFFFF", color="#B5120C"];
+  sqlite [shape=cylinder, label="SQLite · persistent\nCases · drafts · claims · audit\nMock state · protocol versions"];
+  fixtures [shape=folder, label="Synthetic JSON fixtures\nCustomers · transactions · cards\nBase sourced protocols"];
+  officer -> api [label="Review / decide"];
+  api -> officer [label="Snapshots + update events"];
+  customer -> intake [label="Scripted path"];
+  customer -> retell [label="Optional voice/chat"];
+  retell -> intake [label="Signed tools"];
+  intake -> api [label="Confirmed case"];
+  api -> prorio [label="Structured fields"];
+  fixtures -> prorio [label="Owned evidence"];
+  api -> sqlite [label="Persist state"];
+  officer -> approval [label="Approve suggestion"];
+  approval -> sqlite [label="Save version"];
+  sqlite -> prorio [label="Active protocol"];
+}

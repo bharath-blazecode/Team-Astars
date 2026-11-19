@@ -3,12 +3,7 @@
 The officer's first question is “who needs help next?” The first screen answers that with an evidence-ranked queue,
 four live counts and a short preview of one customer. The interface never invents response-time statistics or case data.
 
-**Current state:** the core dashboard, visual insights and shared ownership/live intake are implemented on `main`.
-Westpac SpeedQ branding (#14), live Clario (#13), pale navigation/controls (#18) and automatic live-settings loading
-(#19) were verified in `main` at `a184be1` on 17 Nov 2026 (Brisbane).
-The appearance and feature set remain open to further iteration;
-see the [remaining work in README](README.md#remaining-work-and-next-iterations). This document describes current
-behavior rather than declaring the design final.
+**Status:** completed hackathon prototype, submitted 17 November 2026. The current application uses the original headset, light rose navigation and officer-first demo. Optional future refinements are separate from the completed submission; see [architecture and limitations](docs/architecture.md).
 
 ## Information flow
 
@@ -60,8 +55,7 @@ The former bank-logo file and its active references are removed. The 42px white 
 remain restrained; the layout and case workflow are unchanged.
 
 [BRANDING.md](BRANDING.md) records the source-drawn geometry and current usage. Team Astars, synthetic-data and
-independent-prototype disclosures remain. The narrated [presentation-slide video](docs/video/SHOT_LIST.md) should use
-the current headset and fresh prototype screenshots; replace older bank marks in the externally maintained deck.
+independent-prototype disclosures remain. The [submitted video and final deck](docs/submission/README.md) are historical artifacts; use fresh headset captures for new portfolio material.
 
 ## Accessibility and resilience
 
@@ -94,7 +88,7 @@ real operations.
 
 ## Validation
 
-The [README test commands](README.md#tests) cover Prorio, the API, restart persistence, dashboard access controls,
+The [build-guide test commands](BUILD.md#validation) cover Prorio, the API, restart persistence, dashboard access controls,
 insights and multi-officer collaboration. `npm test` runs both browser suites, including the actual customer demo.
 Browser tests use isolated databases/processes, preserve the developer's data and capture desktop/mobile screenshots.
 Manual officer usability and keyboard/screen-reader review remain on the roadmap; automated checks are not a complete

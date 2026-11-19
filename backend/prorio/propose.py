@@ -38,7 +38,7 @@ def parse_ai_may(item):
 
 def _nice(day):
     """'2026-11-19' -> '19 Nov 2026'."""
-    return md.parse_ts(day + "T00:00:00Z").strftime("%-d %b %Y") if day else None
+    return md.parse_ts(day + "T00:00:00Z").strftime("%d %b %Y").lstrip("0") if day else None
 
 
 def _fill(template, values):
