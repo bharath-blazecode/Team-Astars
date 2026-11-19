@@ -52,6 +52,7 @@ Harm + time to harm + account signals + care needs + bounded waiting
                          → safety rules → priority band
 ```
 
+
 | A quick look inside the engine | What happens to the points | Result |
 |---|---|---|
 | Maria reports an active scam, with a linked $4,800 transfer to a new payee | 60 harm + 20 immediate urgency + 20 account signals | **100 · P1 Critical** |
@@ -147,7 +148,7 @@ Seven backend suites and 103 browser checks passed during the 19 November 2026 c
 
 ## Team and submission
 
-**Team Astars — members listed alphabetically by given name:**
+**Team Astars:**
 
 - Agamvir Bal
 - Aishwarya Naidu
@@ -176,3 +177,4 @@ The team completed and submitted a narrated presentation-slide video on **17 Nov
 The submission is complete. Production identity, multi-worker coordination, live banking adapters, translation, surge grouping and field evaluation are possible extensions, not unfinished submission tasks. No deployment or real-customer use is claimed.
 
 Team-authored code does not yet have a repository-wide licence. A public repository alone does not grant general reuse rights; third-party components retain their own terms. See [licensing status](THIRD_PARTY_NOTICES.md).
+
