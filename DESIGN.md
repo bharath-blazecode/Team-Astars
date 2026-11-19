@@ -31,8 +31,7 @@ prototype still simulates every banking action. Incomplete customer-message draf
 
 ## Visual direction and branding
 
-The team retained the original sidebar, panel partitions, queue/preview and focused case review. The alternative
-horizontal-navigation concept was not selected. The project is now **Westpac SpeedQ**.
+The team retained the original sidebar navigation, panel partitions, queue/preview and focused case review. The project is **Westpac SpeedQ**.
 
 The colour system uses Westpac's published `#DA1710` red for primary actions, `#FCEDEA` pale rose for the sidebar,
 white panels, off-white `#F7F7F6` canvas and dark graphite/grey text. The light sidebar uses dark labels, a rose active

@@ -3,7 +3,7 @@
 **Project:** Westpac SpeedQ / Team Astars
 **Event:** Westpac Innovation & Coding Competition 2026
 **Submitted:** 17 November 2026
-**Status:** Completed and submitted; the team reports it was not selected for the next stage.
+**Status:** Completed and submitted.
 
 - [Watch the submitted presentation-slide video](https://youtu.be/2Sc_2JRPxVs).
 - [Download the final 14-slide pitch deck](Westpac-SpeedQ-Pitch-submitted.pptx).
@@ -25,4 +25,4 @@ The submitted deck is preserved as delivered, not silently revised. Use the curr
 
 Some presentation statistics/citations need primary-source checking before being reused in a portfolio revision, including the ASIC report number (the supplied fact-check points to REP 783), the “1,200 calls/day” statement and an exact future regulatory commencement date. The ACXPA metric discussed in the supplied notes concerns new-customer sales calls, not all customer support. These claims are not used as validated facts in the current README.
 
-No live-call success, certificate, award, customer-impact metric or reason for the judging decision is inferred from the submission. A revised portfolio presentation should be labelled separately from this submitted artifact.
+Submission confirms delivery of the presentation, rather than independently establishing live-call success or customer-impact metrics. A revised portfolio presentation should be labelled separately from this submitted artifact.

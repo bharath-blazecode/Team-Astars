@@ -33,4 +33,4 @@ Karan Rooprai (lead), Amanraj Dhillon, Bharath Sampath, Aishwarya Naidu and Agam
 
 Personal contribution details and a factual summary of the submitted demo's live voice/chat/transfer behaviour have not yet been supplied. A sanitised hosted-agent configuration could improve live reproduction documentation. The offline scripted demonstration is available without it.
 
-The submission is complete. The team was not selected for the next stage. No reason for that decision or award claim is invented.
+The team completed and submitted the hackathon prototype and presentation-slide video on 17 November 2026.
