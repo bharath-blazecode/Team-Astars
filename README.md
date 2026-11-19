@@ -43,12 +43,37 @@ Routine questions can finish during intake. Escalated needs become ranked cases 
 
 </details>
 
+## Inside the priority points system
+
+What makes one case rise above another? Prorio adds points for the **need and its urgency**, checks owned account evidence, then applies safety floors and caps. Officers can see the reasons behind the result.
+
+```text
+Harm + time to harm + account signals + care needs + bounded waiting
+                         → safety rules → priority band
+```
+
+| A quick look inside the engine | What happens to the points | Result |
+|---|---|---|
+| Maria reports an active scam, with a linked $4,800 transfer to a new payee | 60 harm + 20 immediate urgency + 20 account signals | **100 · P1 Critical** |
+| A scam report has no supporting account signal yet | 60 harm + 20 immediate urgency = 80; the evidence gate caps it at 79 | **79 · P2 High**, for an officer to verify |
+| Sam asks for a person after his card-delivery answer | 5 service points | **5 · P4 Low**, awaiting officer approval |
+
+These examples use fresh synthetic records, the fixed evidence clock and zero waiting. Care needs and waiting can add points; protocol floors and evidence caps can change the final total. The score is a triage rule, not a probability of fraud or a measure of the customer's importance.
+
+**The interesting part:** the same urgent words can lead to different scores when the account evidence differs, while a report awaiting verification still receives human attention. Free-text summaries do not enter the ranker, and officers can override a priority with a recorded reason. [Explore the points, bands and safety gates](docs/reference/TECHNICAL_REFERENCE.md#how-priority-is-worked-out).
+
 ## Try two scenarios
 
 1. **Maria — scam in progress:** follow the case evidence and priority reasons, pick up the case, review the proposed response and record a simulated outcome.
 2. **Sam — card delivery:** see the routine answer. In the scripted escalation scenario, Sam still asks for a person and receives a P4 case awaiting approval.
 
 Open `/demo` for the officer-first demonstration, then **Live intake → View customer conversation** for the optional customer view. See the [demo guide](docs/demo.md) for reproduction and a two-officer handoff.
+
+### Small details worth trying
+
+- **Correct the story:** add missing context through the customer flow and inspect the correction in the case history.
+- **Try a shared pickup:** open two local demo officer sessions with different identities; a claim in one becomes visible in the other.
+- **Follow a protocol suggestion:** see how an eligible suggestion becomes a versioned update only after human approval, then inspect a later proposal's version.
 
 ## Run locally
 
@@ -122,7 +147,13 @@ Seven backend suites and 103 browser checks passed during the 19 November 2026 c
 
 ## Team and submission
 
-**Karan Rooprai (team lead), Amanraj Dhillon, Bharath Sampath, Aishwarya Naidu and Agamvir Bal.**
+**Team Astars — members listed alphabetically by given name:**
+
+- Agamvir Bal
+- Aishwarya Naidu
+- Amanraj Dhillon
+- Bharath Sampath
+- Karan Rooprai
 
 The team completed and submitted a narrated presentation-slide video on **17 November 2026**. The final deck has **14 slides**. Personal responsibilities are not inferred from commit counts.
 
